@@ -1,0 +1,248 @@
+/* Onboarding Styles */
+
+.onboarding-page {
+    background: var(--background);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.onboarding-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.onboarding-step {
+    display: none;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(44, 62, 80, 0.15);
+    min-height: 500px;
+}
+
+.onboarding-step.active {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.step-content {
+    text-align: center;
+}
+
+.onboarding-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.onboarding-logo .logo-img {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.step-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.step-content h1,
+.step-content h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.step-content p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.step-header {
+    margin-bottom: 30px;
+}
+
+.step-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-link {
+    background: none;
+    color: var(--secondary);
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 3px dashed var(--border);
+    border-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: var(--background);
+    margin: 30px 0;
+}
+
+.upload-zone:hover {
+    border-color: var(--secondary);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+.upload-zone.dragover {
+    border-color: var(--secondary);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.upload-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.upload-subtext {
+    color: var(--text-medium);
+    font-size: 0.9em;
+}
+
+/* File List */
+.file-list {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--background);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.file-item-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-item-name {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.file-item-remove {
+    background: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Processing */
+.processing-animation {
+    margin: 40px 0;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--border);
+    border-top-color: var(--secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--highlight);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* Success */
+.success-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+.onboarding-summary {
+    background: var(--background);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.summary-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item strong {
+    color: var(--primary);
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.3s;
+}
+
+.progress-dot.active {
+    background: var(--secondary);
+    transform: scale(1.2);
+}
+

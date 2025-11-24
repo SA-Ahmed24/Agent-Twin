@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - Agent Twin</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/onboarding.css">
+</head>
+<body class="onboarding-page">
+    <div class="onboarding-container">
+        <!-- Step 1: Welcome -->
+        <div class="onboarding-step active" id="step1">
+            <div class="step-content">
+                <div class="logo-container onboarding-logo">
+                    <img src="/static/images/logo.jpg" alt="Agent Twin Logo" class="logo-img">
+                </div>
+                <h1>Welcome to Agent Twin!</h1>
+                <p>I'm your AI writing companion. I'll learn your writing style and help you create content that sounds exactly like you.</p>
+                <p>Let's get started by uploading some of your writing samples so I can learn about you!</p>
+                <button class="btn btn-primary" onclick="nextStep()">Get Started</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Basic Info (Optional) -->
+        <div class="onboarding-step" id="step2">
+            <div class="step-content">
+                <div class="step-header">
+                    <h2>Tell me about yourself (Optional)</h2>
+                    <p>This helps me understand your background better</p>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="university">University / School</label>
+                    <input type="text" id="university" placeholder="e.g., MIT, Stanford">
+                </div>
+                <div class="form-group">
+                    <label for="major">Major / Field</label>
+                    <input type="text" id="major" placeholder="e.g., Computer Science">
+                </div>
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+                    <button class="btn btn-link" onclick="skipToUpload()">Skip</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Upload Documents -->
+        <div class="onboarding-step" id="step3">
+            <div class="step-content">
+                <div class="step-header">
+                    <h2>Upload Your Writing Samples</h2>
+                    <p>Upload resumes, cover letters, essays, emails, or any writing samples</p>
+                </div>
+                
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📄</div>
+                    <p class="upload-text">Drag and drop files here</p>
+                    <p class="upload-subtext">or click to browse</p>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md,.docx,.jpg,.jpeg,.png" style="display: none;">
+                </div>
+
+                <div id="fileList" class="file-list"></div>
+
+                <div class="step-actions">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary" onclick="uploadFiles()" id="uploadBtn" disabled>Upload & Analyze</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Processing -->
+        <div class="onboarding-step" id="step4">
+            <div class="step-content">
+                <div class="processing-animation">
+                    <div class="spinner"></div>
+                </div>
+                <h2>Agent Twin is learning about you...</h2>
+                <p id="processingStatus">Analyzing your writing style...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Complete -->
+        <div class="onboarding-step" id="step5">
+            <div class="step-content">
+                <div class="success-icon">✅</div>
+                <h2>All Set!</h2>
+                <p>I've learned about your writing style and experiences. Here's what I discovered:</p>
+                <div id="onboardingSummary" class="onboarding-summary"></div>
+                <button class="btn btn-primary" onclick="completeOnboarding()">Start Chatting!</button>
+            </div>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-dot active" data-step="1"></div>
+            <div class="progress-dot" data-step="2"></div>
+            <div class="progress-dot" data-step="3"></div>
+            <div class="progress-dot" data-step="4"></div>
+            <div class="progress-dot" data-step="5"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/onboarding.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,527 @@
+/* Voice Agent Page Styles */
+
+.voice-page {
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.voice-header {
+    background: var(--primary);
+    color: var(--white);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(44, 62, 80, 0.2);
+    z-index: 1000;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.welcome-message {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Voice Container */
+.voice-container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Voice Setup Section */
+.voice-setup-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.setup-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(44, 62, 80, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.setup-card h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.setup-card p {
+    color: var(--text-medium);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Text to Read */
+.text-to-read {
+    margin: 30px 0;
+    padding: 25px;
+    background: var(--background);
+    border-radius: 15px;
+    border: 2px solid var(--border);
+}
+
+.text-to-read h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.reading-text {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    font-size: 1.05em;
+}
+
+.reading-text p {
+    margin: 15px 0;
+}
+
+/* Recording Interface */
+.recording-interface {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.recording-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: var(--text-medium);
+    font-size: 1em;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--highlight);
+}
+
+.status-dot.recording {
+    background: var(--accent);
+    animation: pulse-fast 0.8s infinite;
+}
+
+.record-btn-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--secondary);
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.1em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.3);
+    margin: 0 auto;
+}
+
+.record-btn-large:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
+}
+
+.record-btn-large:active,
+.record-btn-large.recording {
+    background: var(--accent);
+    transform: scale(0.95);
+    box-shadow: 0 2px 15px rgba(255, 118, 117, 0.4);
+}
+
+.mic-icon-large {
+    font-size: 3em;
+}
+
+.btn-label {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.recording-timer {
+    margin-top: 20px;
+}
+
+#timerText {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.timer-hint {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+.recording-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.recording-result.success {
+    background: rgba(85, 239, 196, 0.2);
+    color: var(--primary);
+    border: 2px solid var(--highlight);
+}
+
+.recording-result.error {
+    background: rgba(255, 118, 117, 0.2);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.upload-progress {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--secondary);
+    width: 0%;
+    transition: width 0.3s;
+    border-radius: 4px;
+}
+
+.upload-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.upload-result.success {
+    background: rgba(85, 239, 196, 0.2);
+    color: var(--primary);
+    border: 2px solid var(--highlight);
+}
+
+.upload-result.error {
+    background: rgba(255, 118, 117, 0.2);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+/* Voice Conversation Section (Voice-Only Interface) */
+.voice-conversation-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(44, 62, 80, 0.15);
+    padding: 40px;
+    gap: 30px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Waveform Visualization */
+.waveform-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.waveform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+}
+
+.wave-bar {
+    width: 8px;
+    height: 20px;
+    background: var(--secondary);
+    border-radius: 4px;
+    animation: wave 1.5s ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.waveform.active .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--secondary), var(--highlight));
+    animation: waveActive 0.8s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.waveform.listening .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--accent), #FF9F9F);
+    animation: waveListening 0.6s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.waveform.processing .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--highlight), #7FFFD4);
+    animation: waveProcessing 1s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes wave {
+    0%, 100% {
+        height: 20px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 60px;
+        transform: scaleY(1.2);
+    }
+}
+
+@keyframes waveActive {
+    0%, 100% {
+        height: 30px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 100px;
+        transform: scaleY(1.3);
+    }
+}
+
+@keyframes waveListening {
+    0%, 100% {
+        height: 40px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 120px;
+        transform: scaleY(1.4);
+    }
+}
+
+@keyframes waveProcessing {
+    0%, 100% {
+        height: 50px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 110px;
+        transform: scaleY(1.2);
+    }
+}
+
+/* Status Message */
+.status-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 60px;
+}
+
+.status-icon {
+    font-size: 2.5em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-text {
+    font-size: 1.1em;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.status-message.listening .status-icon {
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+.status-message.processing .status-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Large Microphone Button */
+.voice-record-btn-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary), #5DADE2);
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.voice-record-btn-large:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.4);
+}
+
+.voice-record-btn-large:active,
+.voice-record-btn-large.recording {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, var(--accent), #FF5252);
+    box-shadow: 0 4px 15px rgba(255, 118, 117, 0.5);
+    animation: recordingPulse 1s ease-in-out infinite;
+}
+
+@keyframes recordingPulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.5);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(255, 118, 117, 0.8);
+    }
+}
+
+.mic-icon-large {
+    font-size: 2.5em;
+}
+
+/* Instructions */
+.instructions {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .voice-container {
+        padding: 15px;
+    }
+    
+    .setup-card {
+        padding: 25px;
+    }
+    
+    .conversation-history {
+        padding: 20px;
+    }
+    
+    .message-content {
+        max-width: 85%;
+    }
+    
+    .voice-record-btn {
+        width: 100px;
+        height: 100px;
+    }
+}
+

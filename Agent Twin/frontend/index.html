@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Twin - Chat</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/chat.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="chat-header">
+        <div class="header-left">
+            <a href="/" class="logo-link">
+                <div class="logo-container">
+                    <img src="/static/images/logo.jpg" alt="Agent Twin Logo" class="logo-img">
+                    <h1 class="logo-text">Agent Twin</h1>
+                </div>
+            </a>
+        </div>
+        <div class="header-center">
+            <span id="welcomeMessage" class="welcome-message">Welcome back!</span>
+        </div>
+        <div class="header-right">
+            <a href="/voice/" class="nav-btn" title="Voice Agent">
+                <span class="nav-icon">🎤</span>
+                <span class="nav-label">Voice</span>
+            </a>
+            <a href="/timeline/" class="nav-btn" title="View Memory Timeline">
+                <span class="nav-icon">🧠</span>
+                <span class="nav-label">Memory</span>
+            </a>
+            <button class="nav-btn logout-btn" id="logoutBtn" title="Logout">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-label">Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <!-- Main Chat Area -->
+        <div class="chat-main">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here -->
+            </div>
+            
+            <!-- Input Area -->
+            <div class="chat-input-area">
+                <div class="input-actions">
+                    <button class="btn-icon" id="attachBtn" title="Attach file">📎</button>
+                    <button class="btn-icon" id="voiceBtn" title="Voice input (hold to record)">🎤</button>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md,.docx,.jpg,.jpeg,.png" style="display: none;">
+                </div>
+                <textarea 
+                    id="messageInput" 
+                    placeholder="Type your message or ask me to write something..."
+                    rows="1"
+                ></textarea>
+                <button class="btn btn-primary" id="sendBtn">Send</button>
+            </div>
+            
+            <!-- Voice Recording Indicator -->
+            <div id="voiceIndicator" class="voice-indicator" style="display: none;">
+                <div class="voice-pulse"></div>
+                <span>Listening... Release to send</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test if JavaScript is working
+        console.log('✅ HTML loaded, JavaScript is working!');
+        
+        // Test button clicks immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('✅ DOM Content Loaded');
+            
+            // Test if elements exist
+            console.log('Send button exists:', !!document.getElementById('sendBtn'));
+            console.log('Message input exists:', !!document.getElementById('messageInput'));
+            console.log('Timeline sidebar exists:', !!document.getElementById('timelineSidebar'));
+            
+            // Add a simple test click handler
+            const sendBtn = document.getElementById('sendBtn');
+            if (sendBtn) {
+                sendBtn.addEventListener('click', function() {
+                    console.log('✅ Send button clicked!');
+                });
+            }
+        });
+        
+        // Fallback: if chat.js doesn't load, show error
+        window.addEventListener('error', function(e) {
+            console.error('❌ JavaScript error:', e);
+        });
+    </script>
+    <script src="/static/js/chat.js"></script>
+    <script>
+        // Verify chat.js loaded
+        setTimeout(() => {
+            if (typeof window.sendMessage === 'undefined') {
+                console.error('❌ chat.js did not load properly!');
+                const container = document.getElementById('chatMessages');
+                if (container) {
+                    container.innerHTML = '<div style="color: red; padding: 20px; background: #fee; border: 2px solid red; border-radius: 8px; margin: 20px;"><strong>Error:</strong> JavaScript failed to load. Please check the browser console (F12) and refresh the page.</div>';
+                }
+            } else {
+                console.log('✅ chat.js loaded successfully');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

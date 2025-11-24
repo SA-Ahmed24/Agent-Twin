@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Timeline - Agent Twin</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/timeline.css">
+</head>
+<body class="timeline-page">
+    <!-- Top Bar -->
+    <header class="timeline-header">
+        <div class="header-left">
+            <a href="/" class="logo-link">
+                <div class="logo-container">
+                    <img src="/static/images/logo.jpg" alt="Agent Twin Logo" class="logo-img">
+                    <h1 class="logo-text">Agent Twin</h1>
+                </div>
+            </a>
+        </div>
+        <div class="header-center">
+            <span id="welcomeMessage" class="welcome-message">Your Memory Timeline</span>
+        </div>
+        <div class="header-right">
+            <a href="/voice/" class="nav-btn" title="Voice Agent">
+                <span class="nav-icon">🎤</span>
+                <span class="nav-label">Voice</span>
+            </a>
+            <a href="/" class="nav-btn">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Chat</span>
+            </a>
+            <button class="nav-btn" id="refreshBtn" title="Refresh Timeline">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-label">Refresh</span>
+            </button>
+            <button class="nav-btn logout-btn" id="logoutBtn" title="Logout">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-label">Logout</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="timeline-container-main">
+        <!-- Hero Section -->
+        <div class="timeline-hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Your Memory Timeline</h2>
+                <p class="hero-subtitle">Everything I've learned about you, organized chronologically</p>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="memory-summary-section">
+            <div class="memory-summary" id="memorySummary">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-section">
+            <div class="section-header">
+                <h3>Memory Timeline</h3>
+                <p>Memory timeline</p>
+            </div>
+            <div class="timeline-wrapper" id="timelineContainer">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading your memories...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Debug: Check if scripts load
+        console.log('Timeline HTML loaded');
+        console.log('Container exists:', !!document.getElementById('timelineContainer'));
+        console.log('Summary exists:', !!document.getElementById('memorySummary'));
+    </script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/timeline.js"></script>
+    <script>
+        // Verify timeline.js loaded - check after scripts have time to execute
+        setTimeout(() => {
+            console.log('=== Timeline Page Script Check ===');
+            console.log('window.loadMemory exists:', typeof window.loadMemory !== 'undefined');
+            console.log('window.loadMemory type:', typeof window.loadMemory);
+            
+            // Check for script loading errors
+            const scripts = document.querySelectorAll('script[src]');
+            scripts.forEach(script => {
+                script.addEventListener('error', () => {
+                    console.error('❌ Script failed to load:', script.src);
+                });
+                script.addEventListener('load', () => {
+                    console.log('✅ Script loaded:', script.src);
+                });
+            });
+            
+            if (typeof window.loadMemory === 'undefined') {
+                console.error('❌ timeline.js did not load properly!');
+                console.error('Available window properties:', Object.keys(window).filter(k => k.includes('load') || k.includes('Memory')));
+                const container = document.getElementById('timelineContainer');
+                if (container) {
+                    container.innerHTML = `
+                        <div class="loading-state">
+                            <p style="color: var(--accent); font-size: 1.1em; margin-bottom: 15px;">❌ JavaScript failed to load.</p>
+                            <p style="color: var(--text-medium); margin-bottom: 10px;">Please check the browser console (F12) for errors.</p>
+                            <p style="color: var(--text-medium); margin-bottom: 20px; font-size: 0.9em;">Expected: /static/js/timeline.js</p>
+                            <button onclick="location.reload()" class="btn btn-primary" style="padding: 12px 24px; border-radius: 25px; cursor: pointer; background: var(--secondary); color: white; border: none; font-size: 1em;">🔄 Refresh Page</button>
+                        </div>
+                    `;
+                }
+            } else {
+                console.log('✅ timeline.js loaded successfully, loadMemory function available');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,283 @@
+/* Public Voice Agent Page Styles */
+
+.public-voice-page {
+    background: linear-gradient(135deg, var(--background) 0%, #E8F4F8 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.public-voice-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(44, 62, 80, 0.15);
+    padding: 40px;
+    text-align: center;
+}
+
+/* Header */
+.voice-header-public {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--background);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img-small {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.voice-title {
+    font-size: 1.8em;
+    color: var(--primary);
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Voice Interface */
+.voice-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Waveform Visualization */
+.waveform-container {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.waveform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    width: 100%;
+}
+
+.wave-bar {
+    width: 8px;
+    background: var(--secondary);
+    border-radius: 4px;
+    animation: wave 1.5s ease-in-out infinite;
+    animation-delay: var(--delay);
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.waveform.active .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--secondary), var(--highlight));
+    animation: waveActive 0.8s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.waveform.listening .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--accent), #FF9F9F);
+    animation: waveListening 0.6s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+.waveform.processing .wave-bar {
+    opacity: 1;
+    background: linear-gradient(to top, var(--highlight), #7FFFD4);
+    animation: waveProcessing 1s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes wave {
+    0%, 100% {
+        height: 20px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 60px;
+        transform: scaleY(1.2);
+    }
+}
+
+@keyframes waveActive {
+    0%, 100% {
+        height: 30px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 100px;
+        transform: scaleY(1.3);
+    }
+}
+
+@keyframes waveListening {
+    0%, 100% {
+        height: 40px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 120px;
+        transform: scaleY(1.4);
+    }
+}
+
+@keyframes waveProcessing {
+    0%, 100% {
+        height: 50px;
+        transform: scaleY(1);
+    }
+    50% {
+        height: 110px;
+        transform: scaleY(1.2);
+    }
+}
+
+/* Status Message */
+.status-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 60px;
+}
+
+.status-icon {
+    font-size: 2.5em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-text {
+    font-size: 1.1em;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.status-message.listening .status-icon {
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+.status-message.processing .status-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Microphone Button */
+.voice-record-btn-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary), #5DADE2);
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.voice-record-btn-large:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(52, 152, 219, 0.4);
+}
+
+.voice-record-btn-large:active,
+.voice-record-btn-large.recording {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, var(--accent), #FF5252);
+    box-shadow: 0 4px 15px rgba(255, 118, 117, 0.5);
+    animation: recordingPulse 1s ease-in-out infinite;
+}
+
+@keyframes recordingPulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 118, 117, 0.5);
+    }
+    50% {
+        box-shadow: 0 4px 30px rgba(255, 118, 117, 0.8);
+    }
+}
+
+.mic-icon-large {
+    font-size: 2.5em;
+}
+
+.btn-label {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* Instructions */
+.instructions {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .public-voice-container {
+        padding: 30px 20px;
+    }
+    
+    .voice-header-public {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .rate-limit-indicator {
+        align-items: center;
+    }
+    
+    .voice-record-btn-large {
+        width: 100px;
+        height: 100px;
+    }
+}
+
